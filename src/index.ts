@@ -1,8 +1,18 @@
 import { TodoItem } from './todoItem';
+import { TodoCollection } from './todoCollection';
+
+let todos = [
+    new TodoItem(1, "Buy Flowers"),
+    new TodoItem(2, "Get Shoes"),
+    new TodoItem(3, "Collect Tickets"),
+    new TodoItem(4, "Call joe", true)
+];
+
+let collection: TodoCollection = new TodoCollection("Adam", todos);
+
 console.clear();
-console.log("Adam's Todo list");
+console.log(`${collection.userName}'s Todo List`);
 
-let todoItem = new TodoItem(1, "shit and lageredsfdsfdcake", false)
-
+let newId: number = collection.addTodo("Go for run");
+let todoItem: TodoItem = collection.getTodoById(newId);
 todoItem.printDetails();
-
