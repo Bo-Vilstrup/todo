@@ -24,7 +24,7 @@ export class TodoCollection {
         return this.itemMap.get(id);
     } // getTodoById
 
-    getTodoItems(includeComplete: boolean): TodoItem[] {
+    getTodoItems(includeComplete: boolean): TodoItem[] { // include completed tasks ? if includeComplete = true - then yes
         return [...this.itemMap.values()]
             .filter(item => includeComplete || !item.complete);
     };
