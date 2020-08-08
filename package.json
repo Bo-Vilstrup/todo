@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/Bo-Vilstrup/todo/issues"
   },
-  "homepage": "https://github.com/Bo-Vilstrup/todo#readme"
+  "homepage": "https://github.com/Bo-Vilstrup/todo#readme",
+  "dependencies": {
+    "inquirer": "^6.3.1"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^7.3.0"
+  }
 }
