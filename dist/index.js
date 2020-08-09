@@ -26,7 +26,7 @@ function promptAdd() {
     console.clear;
     inquirer.prompt({
         type: "input",
-        name: "Add",
+        name: "add",
         message: "Enter task:"
     }).then(answers => {
         if (answers["add"] != "") {
