@@ -40,7 +40,7 @@ class TodoCollection {
     getItemCounts() {
         return {
             total: this.itemMap.size,
-            imcomplete: this.getTodoItems(false).length
+            incomplete: this.getTodoItems(false).length
         };
     }
 } // End of Class

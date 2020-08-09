@@ -13,13 +13,15 @@ let collection = new todoCollection_1.TodoCollection("Adam", todos);
 let showCompleted = true;
 function displayTodoList() {
     console.log(`${collection.userName}'s Todo List `
-        + `(${collection.getItemCounts().imcomplete} items to do)`);
+        + `(${collection.getItemCounts().incomplete} items to do)`);
     collection.getTodoItems(showCompleted).forEach(item => item.printDetails());
 }
 var Commands;
 (function (Commands) {
     Commands["Add"] = "Add New Task";
+    Commands["Complete"] = "Complete Task";
     Commands["Toggle"] = "show/Hide completed";
+    Commands["Purge"] = "Remove Completed Tasks";
     Commands["Quit"] = "Quit";
 })(Commands || (Commands = {}));
 function promptAdd() {
@@ -35,6 +37,23 @@ function promptAdd() {
         promptUser();
     });
 } // End for promptAdd()
+function promptComplete() {
+    console.clear;
+    inquirer.prompt({
+        type: "checkbox",
+        name: "complete",
+        message: "Mark Tasks Complete",
+        choices: collection.getTodoItems(showCompleted).map(item => ({
+            name: item.task,
+            value: item.id,
+            checked: item.complete
+        }))
+    }).then(answers => {
+        let completedTasks = answers["complete"];
+        collection.getTodoItems(true).forEach(item => collection.makeComplete(item.id, completedTasks.find(id => id === item.id) != undefined));
+        promptUser();
+    });
+} // End of function promptComplete()
 function promptUser() {
     console.clear();
     displayTodoList();
@@ -52,6 +71,18 @@ function promptUser() {
                 break;
             case Commands.Add:
                 promptAdd();
+                break;
+            case Commands.Complete:
+                if (collection.getItemCounts().incomplete > 0) {
+                    promptComplete();
+                }
+                else {
+                    promptUser();
+                }
+                break;
+            case Commands.Purge:
+                collection.removeComplete();
+                promptUser();
                 break;
         } // End of switch()
     });

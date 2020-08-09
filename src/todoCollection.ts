@@ -2,7 +2,7 @@ import { TodoItem } from './todoItem';
 
 type ItemCounts = {
     total: number,
-    imcomplete: number
+    incomplete: number
 }
 
 
@@ -52,7 +52,7 @@ export class TodoCollection {
     getItemCounts(): ItemCounts {
         return {
             total: this.itemMap.size,
-            imcomplete: this.getTodoItems(false).length
+            incomplete: this.getTodoItems(false).length
         };
     }
 
