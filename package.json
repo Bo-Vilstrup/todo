@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/Bo-Vilstrup/todo#readme",
   "dependencies": {
-    "inquirer": "^6.3.1"
+    "inquirer": "^6.3.1",
+    "lowdb": "^1.0.0"
   },
   "devDependencies": {
-    "@types/inquirer": "^7.3.0"
+    "@types/inquirer": "^7.3.0",
+    "@types/lowdb": "^1.0.9"
   }
 }
